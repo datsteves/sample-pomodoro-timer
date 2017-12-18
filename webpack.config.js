@@ -11,7 +11,7 @@ const config = {
     output: {
         path: path.join(__dirname, 'docs'),
         filename: '[name].[hash].js',
-        publicPath: '/',
+        publicPath: '',
         chunkFilename: '[name][chunkhash].js',
     },
     module: {
