@@ -1,0 +1,48 @@
+@import "normalize"
+
+html, body
+    background: darken(desaturate(#8BC34A, 42%), 35%)
+    color: #ffffff
+
+.Wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 100vh
+    min-width: 100vw
+
+.App
+    text-align: center
+
+.AppHeader
+    display: flex
+    justify-content: space-between
+    margin-bottom: 30px
+    div
+        margin: 0px 20px
+
+.AppHeadControls
+    display: flex
+    justify-content: space-between
+    button
+        border: none
+        background: rgba(#fff, 0.3)
+        color: #fff
+
+.AppClock
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 100%
+    border: 8px solid transparent
+    height: 250px
+    width: 250px
+    margin: auto
+    font-size: 32px
+    cursor: pointer
+    background: linear-gradient(to top, green 10%, rgba(0,0,0,0) 11%, rgba(0,0,0,0) 100%)
+    text-align: center
+    span
+        font-size: 24px
+        display: block
+        margin-bottom: 15px
