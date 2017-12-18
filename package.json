@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config webpack.config.js --progress",
     "start": "webpack-dev-server --config webpack.config.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
