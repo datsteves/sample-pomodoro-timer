@@ -72,54 +72,44 @@ export default class App extends Component {
                 })
             }
         }
-        clearInterval(this.clockIntervall)
     }
     handleSubtractSessionkLength() {
         if(this.state.sessionLength - 1 > 0) {
             if(!this.state.break) {
                 this.setState({
                     sessionLength: this.state.sessionLength - 1,
-                    timeLeft: (this.state.sessionLength - 1) * 60,
-                    started: false
+                    timeLeft: (this.state.sessionLength - 1) * 60
                 })
             } else {
                 this.setState({
-                    sessionLength: this.state.sessionLength - 1,
-                    started: false
+                    sessionLength: this.state.sessionLength - 1
                 })
             }
         }
-        clearInterval(this.clockIntervall)
     }
     handleAddBreakLength() {
         if(this.state.break) {
             this.setState({
                 breakLength: this.state.breakLength + 1,
-                timeLeft: (this.state.breakLength + 1) * 60,
-                started: false
+                timeLeft: (this.state.breakLength + 1) * 60
             })
         } else {
             this.setState({
-                breakLength: this.state.breakLength + 1,
-                started: false
+                breakLength: this.state.breakLength + 1
             })
         }
-        clearInterval(this.clockIntervall)
     }
     handleAddSessionkLength() {
         if(!this.state.break) {
             this.setState({
                 sessionLength: this.state.sessionLength + 1,
-                timeLeft: (this.state.sessionLength + 1) * 60,
-                started: false
+                timeLeft: (this.state.sessionLength + 1) * 60
             })
         } else {
             this.setState({
-                sessionLength: this.state.sessionLength + 1,
-                started: false
+                sessionLength: this.state.sessionLength + 1
             })
         }
-        clearInterval(this.clockIntervall)
     }
     getTimeAsString() {
         const seconds = ("0" + this.state.timeLeft % 60).slice(-2)
@@ -130,16 +120,15 @@ export default class App extends Component {
         const style = {
             
         }
-        let percantage = 0
+        let percentage = 0
         if(!this.state.break) {
             style.borderColor = "#8BC34A"
-            percantage = (this.state.sessionLength * 60 - this.state.timeLeft) / this.state.sessionLength / 60 * 100
+            percentage = (this.state.sessionLength * 60 - this.state.timeLeft) / this.state.sessionLength / 60 * 100
         } else {
             style.borderColor = "#C62828"
-            percantage = (this.state.breakLength * 60 - this.state.timeLeft) / this.state.breakLength / 60 * 100
+            percentage =  this.state.timeLeft / (this.state.breakLength * 60) * 100
         }
-        console.log(percantage)
-        style.background = "linear-gradient(to top, "+style.borderColor+" "+percantage+"%, rgba(0,0,0,0) "+percantage+"%, rgba(0,0,0,0) 100%)"
+        style.background = "linear-gradient(to top, "+style.borderColor+" "+percentage+"%, rgba(0,0,0,0.1) "+percentage+"%, rgba(0,0,0,0.1) 100%)"
         return <div className={styles.Wrapper}>
                 <div className={styles.App}>
                 <h1>Pomodoro Timer Demo</h1>
@@ -163,7 +152,7 @@ export default class App extends Component {
                 </div>
                 <div style={style} className={styles.AppClock} onClick={this.handleClockClick}>
                     <div>
-                        <span>{this.state.break ? "Break!" : "Work my little Ninja!"}</span>
+                        <span>{this.state.break ? "Break!" : this.state.started ? "Work my little Ninja!" : "Press me to start :)" }</span>
                         {this.getTimeAsString()}
                     </div>
                 </div>
