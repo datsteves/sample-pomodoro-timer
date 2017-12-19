@@ -128,6 +128,13 @@ export default class App extends Component {
             style.borderColor = "#C62828"
             percentage =  this.state.timeLeft / (this.state.breakLength * 60) * 100
         }
+        if(!this.state.started) {
+            if(!this.state.break) {
+                style.borderColor = "#689F38"
+            } else {
+                style.borderColor = "#B71C1C"
+            }
+        }
         style.background = "linear-gradient(to top, "+style.borderColor+" "+percentage+"%, rgba(0,0,0,0.1) "+percentage+"%, rgba(0,0,0,0.1) 100%)"
         return <div className={styles.Wrapper}>
                 <div className={styles.App}>
